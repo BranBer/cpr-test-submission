@@ -1,30 +1,81 @@
-# React + TypeScript + Vite
+# CPR Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the base repo for the CPR coding test.
 
-Currently, two official plugins are available:
+The test is designed to be a simple test of your coding ability. Since most of our clients use React, we have chosen to use it for this test. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Upon getting access to this repo, you'll have **48hrs**  to complete the assignment. 
 
-## Expanding the ESLint configuration
+## The Task
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### The Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+Your are being given a bare repository with a simple React app. 
+We have not added any dependencies to it, that will be up to you. 
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+We want to see you use at least one of the following:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- A State Management library (e.g. Redux, Zustand, StateX)
+- TailwindCSS or Sass **(DON'T use component libraries like MaterialUI or similar)** 
+
+Other libraries are allowed, but the above is required. 
+
+We recommend using a library for animations, but it's not required.
+
+### The Requirements
+
+This is a really close representation of what you'll be doing at CPR.
+
+Upon this link you'll find a design for a simple app. [Figma File](https://www.figma.com/design/fe6dfe0cJ9PlomMQSkhOHN/Boomi-AI-Readiness-Assessment?node-id=0-1) 
+
+We hope that you implement as many elements of this UI as you can. 
+
+Here is an example of what the final product could look like:
+
+![Demo Video](./output.gif) 
+
+*If this video does not play for you, you can watch the screen recording named `input.mov` on this repo* 
+
+**ATTENTION** : we don't need you to create the D3 graph in the design.
+But we understand there people usually have busy lives and we don't want to take too much of your time.
+
+You also don't need to implement the animation of the numbers changing. 
+
+#### Required Animations
+
+We want the design to be as close as possible to the original (pixel perfect is required).
+
+Required animations/transitions:
+- The progress bar should animate as you progress through the questions.
+- The buttons should have a hover effect.
+- The questions should animate in and out.
+- The buttons should adjust to the height of the question, that should be a smooth transition. 
+
+You are NOT required to implement the animations of the numbers changing OR the D3 graph of the example. 
+
+The APP DOES NOT need to be responsive.
+
+### How you are gonna be scored
+
+- **Code Quality**: We want to see clean, well-structured code.
+- **Design Accuracy**: We want to see the design as close as possible to the original.
+- **Animations**: We want to see smooth animations and transitions.
+- **State Management**: We want to see you using a state management library.
+- **CSS**: We want to see you using TailwindCSS or Sass.
+- **Performance**: We want to see a performant app.
+- **Libraries**: We want to see you using libraries that make sense for the project.
+
+
+## How to submit
+
+You should fork this repo and send us the link to your fork when you are done. 
+
+## Next Steps:
+
+- If you should do a good job, we will contact you to schedule a technical interview. 
+- This will not be a whiteboard interview, but a conversation about your code and the decisions you made.
+- You will be asked to explain your code and the reasoning behind your decisions.
+- We may also ask you to make some changes to the code, so be prepared to do some live coding.
+
+## Good Luck!
+
