@@ -67,8 +67,8 @@ export const questionnaireSlice = createSlice({
   initialState,
   reducers: {
     selectAnswer(state, action) {
-      const { questionIndex, answerIndex } = action.payload;
-      state.questions[questionIndex].selectedAnswerIndex = answerIndex;
+      state.questions[state.currentQuestionIndex].selectedAnswerIndex =
+        action.payload;
     },
     nextQuestion(state) {
       if (state.currentQuestionIndex < state.questions.length - 1)
@@ -93,10 +93,11 @@ export const selectCurrentQuestionIndex = (state: RootState) => {
   return state.questionnaire.currentQuestionIndex;
 };
 
-export const selectProgress = (state: RootState) => {
+export const selectProgressPercentage = (state: RootState) => {
   return (
-    (state.questionnaire.currentQuestionIndex + 1) /
-    (state.questionnaire.questions.length + 1)
+    ((state.questionnaire.currentQuestionIndex + 1) /
+      (state.questionnaire.questions.length + 1)) *
+    100
   );
 };
 

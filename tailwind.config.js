@@ -9,6 +9,23 @@ export default {
         mediumGray: "#808080",
         lightGray: "#EEEEEE",
       },
+      transitionProperty: {
+        width: "width",
+      },
+      padding: {
+        button: "10px 18px 10px 18px",
+      },
+      borderRadius: {
+        button: "30px",
+      },
+      borderWidth: {
+        choice: "1px",
+        selectedChoice: "3px",
+      },
+      margin: {
+        choice: "3px",
+        selectedChoice: "1px",
+      },
     },
   },
   plugins: [],
