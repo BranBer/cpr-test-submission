@@ -30,8 +30,8 @@ We hope that you implement all the elements in the design.
 Here is an example of what the final product could look like:
 
 ![Demo Video](./output.gif) 
-![Demo Video](./input.mov) 
 
+[Demo Video Link](./input.mov) 
 *If this video does not play for you, you can watch the screen recording named `input.mov` on this repo* 
 
 **ATTENTION** : we don't need you to create the D3 graph in the design.
