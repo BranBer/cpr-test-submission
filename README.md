@@ -2,7 +2,7 @@
 
 This is the base repo for the CPR coding test.
 
-The test is designed to be a simple test of your coding ability. Since most of our clients use React, we have chosen to use it for this test. 
+This is designed to be a simple test of your coding ability. Since most of our clients use React, it is required for here.
 
 Upon getting access to this repo, you'll have **48hrs**  to complete the assignment. 
 
@@ -10,29 +10,27 @@ Upon getting access to this repo, you'll have **48hrs**  to complete the assignm
 
 ### The Prerequisites
 
-Your are being given a bare repository with a simple React app. 
-We have not added any dependencies to it, that will be up to you. 
+You are being given a bare repository with a simple React app. We have not added any dependencies to it, that will be up to you. 
 
 We want to see you use at least one of the following:
 
-- A State Management library (e.g. Redux, Zustand, StateX)
-- TailwindCSS or Sass **(DON'T use component libraries like MaterialUI or similar)** 
+- A State Management library (e.g. Redux, Zustand, StateX, etc.)
+- TailwindCSS OR Sass **(DON'T use component libraries like MaterialUI or similar)** 
 
-Other libraries are allowed, but the above is required. 
+*Other libraries are allowed, but the above is required. * 
 
 We recommend using a library for animations, but it's not required.
 
 ### The Requirements
 
-This is a really close representation of what you'll be doing at CPR.
+This is a really close representation of what you'll be doing at CPR. Upon this [Figma link](https://www.figma.com/design/fe6dfe0cJ9PlomMQSkhOHN/Boomi-AI-Readiness-Assessment?node-id=0-1) you'll find a design for a simple app. 
 
-Upon this link you'll find a design for a simple app. [Figma File](https://www.figma.com/design/fe6dfe0cJ9PlomMQSkhOHN/Boomi-AI-Readiness-Assessment?node-id=0-1) 
-
-We hope that you implement as many elements of this UI as you can. 
+We hope that you implement all the elements in the design.
 
 Here is an example of what the final product could look like:
 
 ![Demo Video](./output.gif) 
+![Demo Video](./input.mov) 
 
 *If this video does not play for you, you can watch the screen recording named `input.mov` on this repo* 
 
