@@ -1,9 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
+export interface Choice {
+  choice: string;
+  points: number;
+}
 interface Question {
   question: string;
-  choices: string[];
+  choices: Choice[];
   selectedAnswerIndex: number | null;
 }
 
@@ -18,10 +22,21 @@ const initialState: QuestionnaireState = {
     {
       question: "Does your organization have an AI strategy?",
       choices: [
-        "We are exploring but have not yet formulated an AI strategy",
-        "We are actively developing an AI strategy and defining goals",
-        "We are executing on our AI strategy",
-        "We are continuously iterating and improving on our mature AI strategy",
+        {
+          choice: "We are exploring but have not yet formulated an AI strategy",
+          points: 10,
+        },
+        {
+          choice:
+            "We are actively developing an AI strategy and defining goals",
+          points: 20,
+        },
+        { choice: "We are executing on our AI strategy", points: 30 },
+        {
+          choice:
+            "We are continuously iterating and improving on our mature AI strategy",
+          points: 40,
+        },
       ],
       selectedAnswerIndex: null,
     },
@@ -29,10 +44,25 @@ const initialState: QuestionnaireState = {
       question:
         "How would you describe the state of data in your organization?",
       choices: [
-        "We do not know where data resides. It is challenging to find the data we need",
-        "We know where data resides, but it is located in disconnected locations. We need guidance.",
-        "We have the connected data we need, but do not always trust its quality",
-        "We have mature data governance, management, and quality",
+        {
+          choice:
+            "We do not know where data resides. It is challenging to find the data we need",
+          points: 10,
+        },
+        {
+          choice:
+            "We know where data resides, but it is located in disconnected locations. We need guidance.",
+          points: 20,
+        },
+        {
+          choice:
+            "We have the connected data we need, but do not always trust its quality",
+          points: 30,
+        },
+        {
+          choice: "We have mature data governance, management, and quality",
+          points: 40,
+        },
       ],
       selectedAnswerIndex: null,
     },
@@ -40,20 +70,49 @@ const initialState: QuestionnaireState = {
       question:
         "Which statement best describes how your organization develops AI?",
       choices: [
-        "We’re not developing our own AI models but planning to use AI tools",
-        "We are experimenting with pre-training AI models",
-        "We are training and fine tuning our own AI models",
-        "We have implemented generative AI into customer-facing processes",
+        {
+          choice:
+            "We’re not developing our own AI models but planning to use AI tools",
+          points: 10,
+        },
+        {
+          choice: "We are experimenting with pre-training AI models",
+          points: 20,
+        },
+        {
+          choice: "We are training and fine tuning our own AI models",
+          points: 30,
+        },
+        {
+          choice:
+            "We have implemented generative AI into customer-facing processes",
+          points: 40,
+        },
       ],
       selectedAnswerIndex: null,
     },
     {
       question: "How are you currently using AI applications?",
       choices: [
-        "We are not using AI applications and analyze data manually using Excel.",
-        "We have identified goals and are exploring AI applications to use.",
-        "We are implementing AI applications but have not used them.",
-        "We have used AI applications that provide critical insights on our business.",
+        {
+          choice:
+            "We are not using AI applications and analyze data manually using Excel.",
+          points: 10,
+        },
+        {
+          choice:
+            "We have identified goals and are exploring AI applications to use.",
+          points: 20,
+        },
+        {
+          choice: "We are implementing AI applications but have not used them.",
+          points: 30,
+        },
+        {
+          choice:
+            "We have used AI applications that provide critical insights on our business.",
+          points: 40,
+        },
       ],
       selectedAnswerIndex: null,
     },
@@ -70,11 +129,26 @@ export const questionnaireSlice = createSlice({
       if (
         state.questions[state.currentQuestionIndex].selectedAnswerIndex ===
         action.payload
-      )
+      ) {
         state.questions[state.currentQuestionIndex].selectedAnswerIndex = null;
-      else
+        const previousChoice =
+          state.questions[state.currentQuestionIndex].choices[action.payload];
+        state.score -= previousChoice.points;
+      } else {
+        const currentQuestion = state.questions[state.currentQuestionIndex];
+        const previousSelectedIndex = currentQuestion.selectedAnswerIndex;
+
+        if (previousSelectedIndex !== null) {
+          const previousChoice = currentQuestion.choices[previousSelectedIndex];
+          state.score -= previousChoice.points;
+        }
+
+        const newChoice = currentQuestion.choices[action.payload];
+        state.score += newChoice.points;
+
         state.questions[state.currentQuestionIndex].selectedAnswerIndex =
           action.payload;
+      }
     },
     nextQuestion(state) {
       if (state.currentQuestionIndex + 1 < state.questions.length)
@@ -82,9 +156,6 @@ export const questionnaireSlice = createSlice({
     },
     prevQuestion(state) {
       if (state.currentQuestionIndex > 0) state.currentQuestionIndex--;
-    },
-    setScore(state, action) {
-      state.score = action.payload;
     },
   },
 });
@@ -116,5 +187,16 @@ export const selectIsChoiceSelected = (state: RootState) =>
 
 export const selectScore = (state: RootState) => state.questionnaire.score;
 
-export const { nextQuestion, prevQuestion, selectAnswer, setScore } =
+export const computeScorePercentage = (state: RootState) => {
+  const maxScore = state.questionnaire.questions.reduce((acc, question) => {
+    const sumOfMaxPoints = question.choices.reduce(
+      (max, choice) => Math.max(max, choice.points),
+      0
+    );
+    return acc + sumOfMaxPoints;
+  }, 0);
+  return (state.questionnaire.score / maxScore) * 100;
+};
+
+export const { nextQuestion, prevQuestion, selectAnswer } =
   questionnaireSlice.actions;

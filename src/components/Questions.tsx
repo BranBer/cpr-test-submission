@@ -39,7 +39,7 @@ const Questions = () => {
               layout
               className="flex-1 w-full grid grid-rows-choice grid-cols-choice gap-x-4 gap-y-4"
             >
-              {choices.map((choice, index) => {
+              {choices.map(({ choice }, index) => {
                 const selected = selectedAnswerIndex === index;
                 return (
                   <Choice
