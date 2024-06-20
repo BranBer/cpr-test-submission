@@ -26,7 +26,7 @@ const Choice: React.FC<ChoiceProps> = ({ selected, choice, onClick }) => {
       <div
         className={`relative w-full h-full p-4 border-lightGray rounded-lg ${selectedBorder} ${hoverBorderTransition}`}
       >
-        <p className="text-primary">{choice}</p>
+        <p className="text-primary text-choice">{choice}</p>
       </div>
     </div>
   );

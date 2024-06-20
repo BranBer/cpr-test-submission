@@ -4,7 +4,7 @@ import {
   selectQuestion,
 } from "../redux/slices/questionnaireSlice";
 import Choice from "./Choice";
-import QuestionsControls from "./QuestionsControls";
+import QuestionsControlsContainer from "./QuestionsControlsContainer";
 
 const Questions = () => {
   const { question, choices, selectedAnswerIndex } =
@@ -13,9 +13,9 @@ const Questions = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="flex flex-col flex-nowrap items-start justify-start w-full h-full gap-y-10">
-      <h1 className="text-primary w-full text-3xl">{question}</h1>
-      <div className="grid grid-rows-2 grid-cols-2 gap-x-4 gap-y-4">
+    <div className="flex flex-col flex-nowrap items-start justify-between w-full h-full gap-y-4 p-questions">
+      <h1 className="text-primary w-full text-3xl h-question">{question}</h1>
+      <div className="flex-1 w-full grid grid-rows-choice grid-cols-choice gap-x-4 gap-y-4">
         {choices.map((choice, index) => {
           const selected = selectedAnswerIndex === index;
           return (
@@ -30,7 +30,7 @@ const Questions = () => {
           );
         })}
       </div>
-      <QuestionsControls />
+      <QuestionsControlsContainer />
     </div>
   );
 };

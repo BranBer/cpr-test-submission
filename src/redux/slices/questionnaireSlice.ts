@@ -67,11 +67,17 @@ export const questionnaireSlice = createSlice({
   initialState,
   reducers: {
     selectAnswer(state, action) {
-      state.questions[state.currentQuestionIndex].selectedAnswerIndex =
-        action.payload;
+      if (
+        state.questions[state.currentQuestionIndex].selectedAnswerIndex ===
+        action.payload
+      )
+        state.questions[state.currentQuestionIndex].selectedAnswerIndex = null;
+      else
+        state.questions[state.currentQuestionIndex].selectedAnswerIndex =
+          action.payload;
     },
     nextQuestion(state) {
-      if (state.currentQuestionIndex < state.questions.length - 1)
+      if (state.currentQuestionIndex + 1 < state.questions.length)
         state.currentQuestionIndex++;
     },
     prevQuestion(state) {
@@ -92,14 +98,23 @@ export const selectQuestion = (state: RootState) => {
 export const selectCurrentQuestionIndex = (state: RootState) => {
   return state.questionnaire.currentQuestionIndex;
 };
+export const selectQuestionsLength = (state: RootState) =>
+  state.questionnaire.questions.length;
 
 export const selectProgressPercentage = (state: RootState) => {
-  return (
+  const percentage =
     ((state.questionnaire.currentQuestionIndex + 1) /
-      (state.questionnaire.questions.length + 1)) *
-    100
-  );
+      state.questionnaire.questions.length) *
+    100;
+  console.log("Percentage ", percentage);
+  return percentage;
 };
+
+export const selectIsChoiceSelected = (state: RootState) =>
+  state.questionnaire.questions[state.questionnaire.currentQuestionIndex]
+    .selectedAnswerIndex !== null;
+
+export const selectScore = (state: RootState) => state.questionnaire.score;
 
 export const { nextQuestion, prevQuestion, selectAnswer, setScore } =
   questionnaireSlice.actions;
