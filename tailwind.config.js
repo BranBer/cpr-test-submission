@@ -28,6 +28,9 @@ export default {
       },
       transitionProperty: {
         width: "width",
+        height: "height",
+        maxHeight: "max-height",
+        y: "transform",
       },
       padding: {
         button: "10px 18px 10px 18px",
