@@ -5,8 +5,8 @@ const AIReadinessScore = () => {
   const score = useAppSelector(computeScorePercentage);
 
   return (
-    <div className="w-full h-full flex flex-col gap-y-4 items-center justify-center">
-      <h1 className="text-mediumGray">AI Readiness Score</h1>
+    <div className="w-full h-full flex flex-col items-center justify-center">
+      <h1 className="text-mediumGray text-xl">AI Readiness Score</h1>
       <h1 className="text-secondary text-score font-semibold">{score}%</h1>
     </div>
   );

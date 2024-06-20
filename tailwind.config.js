@@ -26,6 +26,9 @@ export default {
       fontWeight: {
         button: "600",
       },
+      fontFamily: {
+        sans: ["Poppins", "ui-sans-serif", "system-ui"],
+      },
       transitionProperty: {
         width: "width",
         height: "height",
