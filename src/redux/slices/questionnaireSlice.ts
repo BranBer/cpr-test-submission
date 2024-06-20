@@ -195,7 +195,7 @@ export const computeScorePercentage = (state: RootState) => {
     );
     return acc + sumOfMaxPoints;
   }, 0);
-  return (state.questionnaire.score / maxScore) * 100;
+  return Math.round((state.questionnaire.score / maxScore) * 100);
 };
 
 export const { nextQuestion, prevQuestion, selectAnswer } =
